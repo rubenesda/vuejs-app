@@ -7,10 +7,13 @@ const items = ref([
   { id: '1', label: '2 board games' },
   { id: '1', label: '20 cups' }
 ])
+const newItem = ref('')
 </script>
 
 <template>
   <h1>{{ header }}</h1>
+  <input v-model.trim="newItem" type="text" placeholder="Add an item">
+  {{ newItem }}
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
