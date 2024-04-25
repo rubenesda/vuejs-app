@@ -15,16 +15,12 @@ const newItemPriority = ref('low')
   <h1>{{ header }}</h1>
   <input v-model.trim="newItem" type="text" placeholder="Add an item">
   {{ newItem }}
-  <!-- v-model will work with radio input -->
+  <!-- v-model will work with select input -->
   Priority:
-  <label>
-    <input type="radio" v-model="newItemPriority" value="low">
-    Low
-  </label>
-  <label>
-    <input type="radio" v-model="newItemPriority" value="high">
-    High
-  </label>
+  <select v-model="newItemPriority">
+    <option value="low">Low</option>
+    <option value="high">High</option>
+  </select>
   <br/>
   {{ newItemPriority }}
   <ul>
