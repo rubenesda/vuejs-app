@@ -13,10 +13,12 @@ const newItemHighPriority = ref(false)
 
 <template>
   <h1>{{ header }}</h1>
-  <div class="add-item-form">
+  <form
+    class="add-item-form"
+    v-on:submit.prevent="items.push({ id: items.length + 1, label: newItem})"
+  >
     <input
       v-model.trim="newItem" type="text" placeholder="Add an item"
-      v-on:keyup.enter="items.push({ id: items.length + 1, label: newItem})"
     >
     Priority:
     <label>
@@ -24,11 +26,10 @@ const newItemHighPriority = ref(false)
       High Priority
     </label>
     <button
-      v-on:click="items.push({ id: items.length + 1, label: newItem })"
       class="btn btn-primary">
       Save Item
     </button>
-  </div>
+  </form>
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
