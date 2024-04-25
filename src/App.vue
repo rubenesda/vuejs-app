@@ -9,6 +9,7 @@ const items = ref([
 ])
 const newItem = ref('')
 const newItemHighPriority = ref(false)
+const iceCreamFlavors = ref([])
 </script>
 
 <template>
@@ -23,6 +24,20 @@ const newItemHighPriority = ref(false)
   </label>
   <br/>
   {{ newItemHighPriority }}
+  <br/>
+  <label>
+    <input type="checkbox" v-model="iceCreamFlavors" value="vanilla">
+    Vanilla
+  </label>
+  <label>
+    <input type="checkbox" v-model="iceCreamFlavors" value="chocolate">
+    Chocolate
+  </label>
+  <label>
+    <input type="checkbox" v-model="iceCreamFlavors" value="strawberry">
+    Strawberry
+  </label>
+  {{ iceCreamFlavors }}
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
