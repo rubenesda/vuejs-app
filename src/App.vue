@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue'
+import { ref, type Ref, computed } from 'vue'
 
 const header = ref('Shopping List App')
+const caracterCount = computed(() => {
+  return newItem.value.length;
+})
 const editing = ref(false)
 const items: Ref<Array<{ id: number, label: string}>> = ref([])
 const newItem = ref('')
@@ -45,6 +48,9 @@ const doEdit = (e: boolean) => {
       Save Item
     </button>
   </form>
+  <p class="counter">
+    {{ caracterCount }}/200
+  </p>
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
