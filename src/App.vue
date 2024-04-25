@@ -3,41 +3,32 @@ import { ref } from 'vue'
 
 const header = ref('Shopping List App')
 const items = ref([
-  { id: '1', label: '10 party hats' },
-  { id: '1', label: '2 board games' },
-  { id: '1', label: '20 cups' }
+  { id: 1, label: '10 party hats' },
+  { id: 2, label: '2 board games' },
+  { id: 3, label: '20 cups' }
 ])
 const newItem = ref('')
 const newItemHighPriority = ref(false)
-const iceCreamFlavors = ref([])
 </script>
 
 <template>
   <h1>{{ header }}</h1>
-  <input v-model.trim="newItem" type="text" placeholder="Add an item">
-  {{ newItem }}
-  <!-- v-model will work with select input -->
-  Priority:
-  <label>
-    <input type="checkbox" v-model="newItemHighPriority">
-    High Priority
-  </label>
-  <br/>
-  {{ newItemHighPriority }}
-  <br/>
-  <label>
-    <input type="checkbox" v-model="iceCreamFlavors" value="vanilla">
-    Vanilla
-  </label>
-  <label>
-    <input type="checkbox" v-model="iceCreamFlavors" value="chocolate">
-    Chocolate
-  </label>
-  <label>
-    <input type="checkbox" v-model="iceCreamFlavors" value="strawberry">
-    Strawberry
-  </label>
-  {{ iceCreamFlavors }}
+  <div class="add-item-form">
+    <input
+      v-model.trim="newItem" type="text" placeholder="Add an item"
+      v-on:keyup.enter="items.push({ id: items.length + 1, label: newItem})"
+    >
+    Priority:
+    <label>
+      <input type="checkbox" v-model="newItemHighPriority">
+      High Priority
+    </label>
+    <button
+      v-on:click="items.push({ id: items.length + 1, label: newItem })"
+      class="btn btn-primary">
+      Save Item
+    </button>
+  </div>
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
