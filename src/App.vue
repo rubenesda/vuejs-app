@@ -8,7 +8,7 @@ const items = ref([
   { id: '1', label: '20 cups' }
 ])
 const newItem = ref('')
-const newItemPriority = ref('low')
+const newItemHighPriority = ref(false)
 </script>
 
 <template>
@@ -17,12 +17,12 @@ const newItemPriority = ref('low')
   {{ newItem }}
   <!-- v-model will work with select input -->
   Priority:
-  <select v-model="newItemPriority">
-    <option value="low">Low</option>
-    <option value="high">High</option>
-  </select>
+  <label>
+    <input type="checkbox" v-model="newItemHighPriority">
+    High Priority
+  </label>
   <br/>
-  {{ newItemPriority }}
+  {{ newItemHighPriority }}
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
