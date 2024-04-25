@@ -8,12 +8,25 @@ const items = ref([
   { id: '1', label: '20 cups' }
 ])
 const newItem = ref('')
+const newItemPriority = ref('low')
 </script>
 
 <template>
   <h1>{{ header }}</h1>
   <input v-model.trim="newItem" type="text" placeholder="Add an item">
   {{ newItem }}
+  <!-- v-model will work with radio input -->
+  Priority:
+  <label>
+    <input type="radio" v-model="newItemPriority" value="low">
+    Low
+  </label>
+  <label>
+    <input type="radio" v-model="newItemPriority" value="high">
+    High
+  </label>
+  <br/>
+  {{ newItemPriority }}
   <ul>
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
