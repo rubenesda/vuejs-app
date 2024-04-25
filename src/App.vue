@@ -26,7 +26,6 @@ const doEdit = (e: boolean) => {
       Add item
     </button>
   </div>
-  <a v-bind:href="newItem">Dynamic Link</a>
   <form
     class="add-item-form"
     v-if="editing"
@@ -41,6 +40,7 @@ const doEdit = (e: boolean) => {
       High Priority
     </label>
     <button
+      v-bind:disabled="newItem.length === 0"
       class="btn btn-primary">
       Save Item
     </button>
