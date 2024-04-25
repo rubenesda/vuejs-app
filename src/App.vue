@@ -40,7 +40,7 @@ const doEdit = (e: boolean) => {
       High Priority
     </label>
     <button
-      v-bind:disabled="newItem.length === 0"
+      v-bind:disabled="newItem.length < 5"
       class="btn btn-primary">
       Save Item
     </button>
