@@ -72,6 +72,7 @@ const doEdit = (e: boolean) => {
     <!-- Below, it is using destructure form -->
     <li v-for="{ id, label, purchased, highPriority} in reversedItems"
       :key="id"
+      class="static-class"
       :class="{strikeout: purchased, priority: highPriority}"
     >
       {{ label }}
