@@ -77,6 +77,14 @@ const doEdit = (e: boolean) => {
     >
       {{ label }}
     </li>
+
+    <li v-for="{ id, label, purchased, highPriority} in reversedItems"
+      :key="id"
+      class="static-class"
+      :class="['strikeout', 'priority']"
+    >
+      {{ label }}
+    </li>
   </ul>
   <p v-if="!items.length">
     Nothing to see here
