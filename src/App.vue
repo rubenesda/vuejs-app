@@ -82,8 +82,8 @@ const doEdit = (e: boolean) => {
       :key="id"
       class="static-class"
       :class="[
-        purchased ? 'strikeout text-gray' : 'underlined',
-        highPriority ? 'priority' : '',
+        { strikeout: purchased },
+        { priority: highPriority }
       ]"
     >
       {{ label }}
