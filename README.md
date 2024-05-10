@@ -1,3 +1,17 @@
+# How this was started
+
+You can employ this one https://vuejs.org/guide/quick-start.html#creating-a-vue-application. However, you have to employ this command
+
+```bash
+ yarn create vue
+```
+
+If you want to add the files to root folder
+
+```bash
+ yarn create vue .
+```
+
 # vuejs-app
 
 This template should help get you started developing with Vue 3 in Vite.
