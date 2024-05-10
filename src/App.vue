@@ -81,7 +81,10 @@ const doEdit = (e: boolean) => {
     <li v-for="{ id, label, purchased, highPriority} in reversedItems"
       :key="id"
       class="static-class"
-      :class="['strikeout', 'priority']"
+      :class="[
+        purchased ? 'strikeout text-gray' : 'underlined',
+        highPriority ? 'priority' : '',
+      ]"
     >
       {{ label }}
     </li>
