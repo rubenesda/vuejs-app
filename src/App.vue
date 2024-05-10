@@ -28,12 +28,19 @@ const items: Ref<Array<{ id: number, label: string, purchased: boolean, highPrio
 const newItem = ref('')
 const newItemHighPriority = ref(false)
 const saveItem = () => {
-  items.value.push({ id: items.value.length + 1, label: newItem.value, purchased: false, highPriority: false})
+  items.value.push({
+    id: items.value.length + 1,
+    label: newItem.value,
+    purchased: false,
+    highPriority: newItemHighPriority.value,
+  })
   newItem.value = ''
+  newItemHighPriority.value = false
 }
 const doEdit = (e: boolean) => {
   editing.value = e
   newItem.value = ''
+  newItemHighPriority.value = false
 }
 const togglePurchased = (item: {id: number, label: string, purchased: boolean, highPriority: boolean }) => {
   item.purchased = !item.purchased
