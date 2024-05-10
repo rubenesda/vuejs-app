@@ -4,25 +4,31 @@ import { ref, type Ref, computed } from 'vue'
 const header = ref('Shopping List App')
 const reversedItems = computed(() => [...items.value].reverse())
 const editing = ref(false)
-const items: Ref<Array<{ id: number, label: string}>> = ref([
+const items: Ref<Array<{ id: number, label: string, purchased: boolean, highPriority: boolean}>> = ref([
   // Previous data
   {
-     id: 1,
-     label: "10 party hats",
+    id: 1,
+    label: "10 party hats",
+    purchased: true,
+    highPriority: false,
   },
   {
-  id: 2,
-  label:"2 board games",
+    id: 2,
+    label:"2 board games",
+    purchased: true,
+    highPriority: false,
   },
   {
     id: 3,
     label: "20 cups",
+    purchased: false,
+    highPriority: true,
   }
 ])
 const newItem = ref('')
 const newItemHighPriority = ref(false)
 const saveItem = () => {
-  items.value.push({ id: items.value.length + 1, label: newItem.value})
+  items.value.push({ id: items.value.length + 1, label: newItem.value, purchased: false, highPriority: false})
   newItem.value = ''
 }
 const doEdit = (e: boolean) => {
@@ -64,7 +70,12 @@ const doEdit = (e: boolean) => {
     <!-- Uncomment this line code if you care for nondestructure form -->
     <!-- <li v-for="item in items" :key="item.id">{{ item.label }}</li> -->
     <!-- Below, it is using destructure form -->
-    <li v-for="{ id, label } in reversedItems" :key="id">{{ label }}</li>
+    <li v-for="{ id, label, purchased, highPriority} in reversedItems"
+      :key="id"
+      :class="{strikeout: purchased, priority: highPriority}"
+    >
+      {{ label }}
+    </li>
   </ul>
   <p v-if="!items.length">
     Nothing to see here
